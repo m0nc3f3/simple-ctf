@@ -1,8 +1,8 @@
----
 
-title: "Simple CTF: Net Sec Challenge Write-up"  
-author: moncef fennan  
-date: 2025-11-03  
+
+# Simple CTF: Write-up
+
+_Author: moncef fennan — Date: 2025-11-03_
 tags:
 
 - ctf
@@ -16,19 +16,12 @@ tags:
 - ssh
     
 - web
-    
-
----
-
-# Simple CTF: Write-up
-
-_Author: moncef fennan — Date: 2025-11-03_
 
 ## Table of Contents
 
-- [🚀 Scanning & Reconnaissance]
+- [🚀 Scanning & Reconnaissance](#Scanning & Reconnaissance)
     
-- [🕵️ Service Enumeration & Flag Hunting]
+- [🕵️ Service Enumeration & Flag Hunting](Service Enumeration & Flag Hunting)
     
     - [Which services under port 1000?]
         
@@ -83,7 +76,7 @@ SSH on a non-standard port — nothing fancy, just remember to connect with `-p 
 Directory enumeration showed a `/simple` path which pointed to **CMS Made Simple**. I checked Exploit‑DB and found an exploit for it.
 <img src="/images/enumeration.png" alt="this is enumeration using gobuster">
 
-<img src="directory simple.png" alt="this is simple directory">
+<img src="/images/directory simple.png" alt="this is simple directory">
 
 `I confirmed the CVE and vulnerability type from the exploit details.`
 <img src="/images/cms made simple cve.png" alt="this is the cve">
