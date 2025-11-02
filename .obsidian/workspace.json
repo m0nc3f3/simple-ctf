@@ -172,19 +172,20 @@
   },
   "active": "7d802108c62a1d31",
   "lastOpenFiles": [
-    "Untitled.md",
     "images/my user can run the vim , we'll look for the prives.png",
-    "images/the second flag.png",
-    "images/the second user found.png",
-    "images/the first flag.png",
-    "images/hash cracked and found a password for mitch.png",
-    "images/found a salt with a hash of the password.png",
-    "images/rabbit hole other directories.png",
     "images/nano exploit.py.png",
+    "images/nmap-scan.png",
+    "images/rabbit hole other directories.png",
+    "images/the second user found.png",
+    "images/the second flag.png",
+    "images/the first flag.png",
+    "README.md",
+    "images/hash cracked and found a password for mitch.png",
+    "Untitled.md",
+    "images/found a salt with a hash of the password.png",
     "images/cms made simple cve.png",
     "images/directory simple.png",
     "images",
-    "README.md",
     "images"
   ]
 }
