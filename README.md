@@ -56,7 +56,7 @@ Start with a full TCP port scan to discover services.
 nmap -sT -p- <TARGET_IP>
 ```
 
-<img src="nmap-scan.png" alt="this is nmap scan">
+<img src="/images/nmap-scan.png" alt="this is nmap scan">
 
 > [!NOTE]  
 > **Question:** How many services are running under port 1000?  
@@ -81,11 +81,13 @@ SSH on a non-standard port — nothing fancy, just remember to connect with `-p 
 ### Web app (CMS Made Simple) — CVE & vulnerability
 
 Directory enumeration showed a `/simple` path which pointed to **CMS Made Simple**. I checked Exploit‑DB and found an exploit for it.
-<img src="enumeration.png" alt="this is enumeration using gobuster">
+<img src="/images/enumeration.png" alt="this is enumeration using gobuster">
 
 <img src="directory simple.png" alt="this is simple directory">
+
 `I confirmed the CVE and vulnerability type from the exploit details.`
-<img src="cms made simple cve.png" alt="this is the cve">
+<img src="/images/cms made simple cve.png" alt="this is the cve">
+
 > [!NOTE]  
 > **Question:** What's the CVE you're using against the application?  
 > **Answer:** `CVE-2019-9053`
@@ -100,18 +102,19 @@ This SQLi lets us dump database data — including a password hash.
 ### Rabbit hole enumeration
 
 CTFs love decoys. After hitting `/simple`, I spent a little time exploring other obvious paths and creds that looked promising but led nowhere useful. Those dead ends included some directories  that had no flags. I kept notes, pivoted back to the CMS exploit, and saved time — that’s the trick: try quickly, document the dead end, then move on.
-<img src="rabbit hole other directories.png" alt="enumeration dead end">
+<img src="/images/rabbit hole other directories.png" alt="enumeration dead end">
 
 ### Password & Cracking
 
 I used the exploit from Exploit‑DB to pull a hashed password and the username, then cracked the hash locally with hashcat.
 ![[nano exploit.py.png]]
 We will be using the exploit from Exploit-DB to extract a hashed password and username. 
-<img src="found a salt with a hash of the password.png " alt="this is the exploit.py">
+<img src="/images/found a salt with a hash of the password.png " alt="this is the exploit.py">
 
 we will attempt to crack this hashed password using hashcat 
 
-<img src="hash cracked and found a password for mitch.png" alt="this is the hashcat image">
+<img src="/images/hash cracked and found a password for mitch.png" alt="this is the hashcat image">
+
 >[!NOTE]  
 > **Question:** What's the password?  
 > **Answer:** `secret`
@@ -127,7 +130,7 @@ Use the recovered credentials to SSH into the host.
 > **Question:** Where can you login with the details obtained?  
 > **Answer:** `ssh`
 
-<img src="the first flag.png" alt="this is the first flag">
+<img src="/images/the first flag.png" alt="this is the first flag">
 
 After logging in, the user flag was found inside `/usr.txt`.
 
@@ -142,7 +145,8 @@ After logging in, the user flag was found inside `/usr.txt`.
 
 I checked `/home` and found another user folder.
 
-<img src="the second user found.png" alt="this is the other user screenshot">
+<img src="/images/the second user found.png" alt="this is the other user screenshot">
+
 > [!NOTE]  
 > **Question:** Is there any other user in the home directory? What's its name?  
 > **Answer:** `sunbath`
@@ -171,7 +175,7 @@ sudo vim -c ':!/bin/sh'
 sudo vim -c 'set shell=/bin/sh' -c ':shell'
 ```
 
-<img src="my user can run the vim , we'll look for the prives.png" alt="the second root flag">
+<img src="/images/my user can run the vim , we'll look for the prives.png" alt="the second root flag">
 
 ---
 
@@ -179,7 +183,7 @@ sudo vim -c 'set shell=/bin/sh' -c ':shell'
 
 After escalating to root, I read the root flag.
 
-<img src="the second flag.png" alt="this is the second flag"
+<img src="/images/the second flag.png" alt="this is the second flag">
 
 > [!NOTE]  
 > **Question:** What's the root flag?  
@@ -188,7 +192,6 @@ After escalating to root, I read the root flag.
 
 ---
 
-## 🏁 Conclusion
 
 ## 🏁 Conclusion
 
