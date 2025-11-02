@@ -166,11 +166,24 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "yet-another-obsidian-synchronizer:YAOS": false
     }
   },
-  "active": "055f27f7055b3dbc",
+  "active": "7d802108c62a1d31",
   "lastOpenFiles": [
+    "Untitled.md",
+    "images/my user can run the vim , we'll look for the prives.png",
+    "images/the second flag.png",
+    "images/the second user found.png",
+    "images/the first flag.png",
+    "images/hash cracked and found a password for mitch.png",
+    "images/found a salt with a hash of the password.png",
+    "images/rabbit hole other directories.png",
+    "images/nano exploit.py.png",
+    "images/cms made simple cve.png",
+    "images/directory simple.png",
+    "images",
     "README.md",
     "images"
   ]
