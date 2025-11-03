@@ -18,28 +18,22 @@ tags:
 - web
 
 ## Table of Contents
-
-* [🚀 Scanning & Reconnaissance](#-Scanning--Reconnaissance)
-    
-* [🕵️ Service Enumeration & Flag Hunting](#-Service-Enumeration--Flag Hunting)
-    
-    - [Which services under port 1000?]
-        
-    - [Higher port / SSH]
-        
-    - [Web app (CMS Made Simple) — CVE & vulnerability]
-        
-    - [Password & Cracking]
-        
-    - [SSH login & user flag]
-        
-    - [Other local users]
-    - [Privilege escalation (sudo/vim)]
-- [💻 Web Challenge (if any)]
-* [🏁 Conclusion](#-Conclusion)
+- [🚀 Scanning & Reconnaissance](#scanning-reconnaissance)
+- [🕵️ Service Enumeration & Flag Hunting](#-service-enumeration-flag-hunting)
+  - [Higher port / SSH](#higher-port-ssh)
+  - [Web app (CMS Made Simple) — CVE & vulnerability](#web-app-cms-made-simple-cve-vulnerability)
+  - [Rabbit hole enumeration](#rabbit-hole-enumeration)
+  - [Password & Cracking](#password--cracking)
+  - [SSH login & user flag](#ssh-login-and-user-flag)
+  - [Other local users](#other-local-users)
+  - [Privilege escalation (sudo/vim)](#privilege-escalation--sudo-vim)
+  - [Root flag](#root-flag)
+- [🏁 Conclusion](#-conclusion)
     
 
 ---
+
+<a id="scanning-reconnaissance"></a>
 
 ## 🚀 Scanning & Reconnaissance
 
@@ -56,11 +50,12 @@ nmap -sT -p- <TARGET_IP>
 > **Answer:** `2`
 
 ---
+<a id="-service-enumeration-flag-hunting"></a>
 
 ## 🕵️ Service Enumeration & Flag Hunting
 
 We go service by service: grab banners, poke the web app, and hunt for flags.
-
+<a id="higher-port-ssh"></a>
 ### Higher port / SSH
 
 > [!NOTE]  
@@ -70,7 +65,7 @@ We go service by service: grab banners, poke the web app, and hunt for flags.
 SSH on a non-standard port — nothing fancy, just remember to connect with `-p 2222`
 
 ---
-
+<a id="web-app-cms-made-simple-cve-vulnerability"></a>
 ### Web app (CMS Made Simple) — CVE & vulnerability
 
 Directory enumeration showed a `/simple` path which pointed to **CMS Made Simple**. I checked Exploit‑DB and found an exploit for it.
@@ -92,11 +87,12 @@ Directory enumeration showed a `/simple` path which pointed to **CMS Made Simple
 This SQLi lets us dump database data — including a password hash.
 
 ---
+<a id="rabbit-hole-enumeration"></a>
 ### Rabbit hole enumeration
 
 CTFs love decoys. After hitting `/simple`, I spent a little time exploring other obvious paths and creds that looked promising but led nowhere useful. Those dead ends included some directories  that had no flags. I kept notes, pivoted back to the CMS exploit, and saved time — that’s the trick: try quickly, document the dead end, then move on.
 <img src="/images/rabbit hole other directories.png" alt="enumeration dead end">
-
+<a id="password-cracking"></a>
 ### Password & Cracking
 
 I used the exploit from Exploit‑DB to pull a hashed password and the username, then cracked the hash locally with hashcat.
@@ -114,7 +110,7 @@ we will attempt to crack this hashed password using hashcat
 
 
 ---
-
+<a id="ssh-login-and-user-flag"></a>
 ### SSH login & user flag
 
 Use the recovered credentials to SSH into the host.
@@ -133,7 +129,7 @@ After logging in, the user flag was found inside `/usr.txt`.
 
 
 ---
-
+<a id="other-local-users"></a>
 ### Other local users
 
 I checked `/home` and found another user folder.
@@ -145,7 +141,7 @@ I checked `/home` and found another user folder.
 > **Answer:** `sunbath`
 
 ---
-
+<a id="privilege-escalation--sudo-vim"></a>
 ### Privilege escalation (sudo / vim)
 
 We checked allowed sudo commands to find a path to root.
@@ -171,7 +167,7 @@ sudo vim -c 'set shell=/bin/sh' -c ':shell'
 <img src="/images/my user can run the vim , we'll look for the prives.png" alt="the second root flag">
 
 ---
-
+<a id="root-flag"></a>
 ### Root flag
 
 After escalating to root, I read the root flag.
