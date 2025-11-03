@@ -19,9 +19,9 @@ tags:
 
 ## Table of Contents
 
-- [🚀 Scanning & Reconnaissance](#Scanning & Reconnaissance)
+* [🚀 Scanning & Reconnaissance](#-Scanning--Reconnaissance)
     
-- [🕵️ Service Enumeration & Flag Hunting](Service Enumeration & Flag Hunting)
+* [🕵️ Service Enumeration & Flag Hunting](#-Service-Enumeration--Flag Hunting)
     
     - [Which services under port 1000?]
         
@@ -36,7 +36,7 @@ tags:
     - [Other local users]
     - [Privilege escalation (sudo/vim)]
 - [💻 Web Challenge (if any)]
-- [🏁 Conclusion](https://chatgpt.com/c/6907e2b1-c354-832d-a5ce-8bc1eabe91df#-conclusion)
+* [🏁 Conclusion](#-Conclusion)
     
 
 ---
